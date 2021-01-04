@@ -37,8 +37,19 @@ export class PhotoFormComponent implements OnInit {
 
   /* #region Public Properties*/
 
-  photoForm: FormGroup;
+  public photoForm: FormGroup;
+  public file: File;
 
   /* #endregion Public Properties*/
+
+  /* #region Public Methods*/
+
+  public upload() {
+    const description = this.photoForm.get('description').value;
+    const allowComments = this.photoForm.get('allowComments').value;
+    
+  }
+
+  /* #endregion Public Methods*/
 
 }
