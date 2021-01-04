@@ -125,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "alurapic"
+  "defaultProject": "alurapic",
+  "cli": {
+    "analytics": false
+  }
 }
