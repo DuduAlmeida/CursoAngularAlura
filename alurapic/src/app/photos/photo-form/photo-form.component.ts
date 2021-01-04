@@ -1,8 +1,11 @@
-import { Validators } from '@angular/forms';
 /* #region Imports*/
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
+
+import { PhotoService } from './../photo/photo.service';
+import { Router } from '@angular/router';
 
 /* #endregion Imports*/
 
@@ -18,7 +21,9 @@ export class PhotoFormComponent implements OnInit {
    * Construtor padrão
    */
   constructor(
-    private readonly formBuilder: FormBuilder
+    private readonly formBuilder: FormBuilder,
+    private readonly photoService: PhotoService,
+    private readonly router: Router,
   ) { }
 
   /* #endregion Constructor*/
@@ -47,7 +52,10 @@ export class PhotoFormComponent implements OnInit {
   public upload() {
     const description = this.photoForm.get('description').value;
     const allowComments = this.photoForm.get('allowComments').value;
-    
+
+    return void this.photoService
+      .upload(description, allowComments, this.file)
+      .subscribe(() => this.router.navigate(['']));
   }
 
   /* #endregion Public Methods*/
